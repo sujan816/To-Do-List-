@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-anime-bg: #0f172a;
+  --color-anime-surface: #1e293b;
+  --color-anime-primary: #6366f1;
+  --color-anime-accent: #22c55e;
+}
+
+@layer base {
+  body {
+    @apply bg-anime-bg text-slate-200 font-sans selection:bg-anime-primary/30;
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.4));
+  }
+  .glow-accent {
+    filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));
+  }
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+}

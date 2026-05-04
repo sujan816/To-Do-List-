@@ -2,16 +2,24 @@
 
 A clean task manager with a subtle anime dark minimal vibe.
 
-## 🚀 GitHub Pages Deployment Steps
+## 🚀 How to fix the "Blank Screen" on GitHub Pages
 
-1. **Export to GitHub**: Use the AI Studio export feature to push this code to your `To-Do-List-` repository.
-2. **Configure Base Path**: The `vite.config.ts` is already set with `base: '/To-Do-List-/'`.
-3. **Deploy**:
-   - If you want to deploy manually: Run `npm run build` and upload the contents of the `dist` folder to your `gh-pages` branch.
-   - **Recommended**: Go to **Settings > Pages** on GitHub and select **GitHub Actions** as the source. GitHub will suggest a custom workflow for "Static HTML" or "Vite".
+If your site is blank, it's because GitHub hasn't "built" your code yet. Follow these steps:
 
-## 🔒 Security Note
-The Firebase API key in `firebase-applet-config.json` is safe to be public. Your data is secured by the **Firestore Security Rules** found in `firestore.rules`.
+1. **Push your code**: Make sure all these files are in your GitHub repo `To-Do-List-`.
+2. **Go to GitHub Settings**:
+   - Open your repo on GitHub.
+   - Click **Settings** (top bar).
+   - Click **Pages** (left sidebar).
+3. **Change Build Source**:
+   - Under "Build and deployment", change **Source** from "Deploy from a branch" to **GitHub Actions**.
+4. **Select Vite Workflow**:
+   - GitHub will show suggestions. Look for **Static HTML** or **Vite**. 
+   - Click "Configure" and commit the file it suggests.
+   - GitHub will now automatically build and deploy your site every time you push code!
+
+## 🔒 Firebase Security
+The API key is public by design for client-side apps, but your data is protected by the `firestore.rules` file in this repo.
 
 ## ✨ Features
 - Modern Anime Dark Theme

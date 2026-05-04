@@ -1,20 +1,21 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🌌 AniTask - Anime-Themed To-Do App
 
-# Run and deploy your AI Studio app
+A clean task manager with a subtle anime dark minimal vibe.
 
-This contains everything you need to run your app locally.
+## 🚀 GitHub Pages Deployment Steps
 
-View your app in AI Studio: https://ai.studio/apps/9ba684b6-692d-4485-84ea-53fda17f47e7
+1. **Export to GitHub**: Use the AI Studio export feature to push this code to your `To-Do-List-` repository.
+2. **Configure Base Path**: The `vite.config.ts` is already set with `base: '/To-Do-List-/'`.
+3. **Deploy**:
+   - If you want to deploy manually: Run `npm run build` and upload the contents of the `dist` folder to your `gh-pages` branch.
+   - **Recommended**: Go to **Settings > Pages** on GitHub and select **GitHub Actions** as the source. GitHub will suggest a custom workflow for "Static HTML" or "Vite".
 
-## Run Locally
+## 🔒 Security Note
+The Firebase API key in `firebase-applet-config.json` is safe to be public. Your data is secured by the **Firestore Security Rules** found in `firestore.rules`.
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## ✨ Features
+- Modern Anime Dark Theme
+- Google Authentication
+- Real-time Cloud Sync
+- Priority & Due Dates
+- Smooth Framer Motion Animations

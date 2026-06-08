@@ -2,5 +2,5 @@
   "name": "AniTask",
   "description": "A refined anime-themed task manager with a modern dark minimal aesthetic, smooth motion animations, and local storage persistence.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

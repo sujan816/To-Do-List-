@@ -28,3 +28,101 @@
     @apply bg-white/5 backdrop-blur-md border border-white/10;
   }
 }
+
+/* Custom Thematic Background Keyframes */
+@keyframes floatUp {
+  0% {
+    transform: translateY(105vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fallDown {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(105vh) translateX(-50px) rotate(-360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes driftSlow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate(30px, -20px) scale(1.1);
+    opacity: 0.55;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes scanlineAnim {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 200%;
+  }
+}
+
+/* Animation Classes */
+.animate-float-up-slow {
+  animation: floatUp 20s linear infinite;
+}
+.animate-float-up-medium {
+  animation: floatUp 14s linear infinite;
+}
+.animate-float-up-fast {
+  animation: floatUp 8s linear infinite;
+}
+
+.animate-fall-down-slow {
+  animation: fallDown 22s linear infinite;
+}
+.animate-fall-down-medium {
+  animation: fallDown 15s linear infinite;
+}
+.animate-fall-down-fast {
+  animation: fallDown 9s linear infinite;
+}
+
+.animate-drift-slow {
+  animation: driftSlow 12s ease-in-out infinite;
+}
+.animate-pulse-glow {
+  animation: pulseGlow 7s ease-in-out infinite;
+}
+.animate-scanline {
+  animation: scanlineAnim 8s linear infinite;
+}
+

@@ -15,15 +15,15 @@ export default function TaskFilters({ currentFilter, onFilterChange, count }: Ta
   const filters: FilterType[] = ['all', 'completed', 'pending'];
 
   return (
-    <div className="flex items-center justify-between mb-6 px-2" id="task-filters">
-      <div className="flex gap-2 p-1 bg-anime-surface/30 rounded-xl border border-white/5">
+    <div className="flex items-center justify-between mb-4 px-1" id="task-filters">
+      <div className="flex gap-1.5 p-1 bg-slate-900/40 rounded-xl border border-white/5">
         {filters.map((f) => (
           <button
             key={f}
             onClick={() => onFilterChange(f)}
-            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all capitalize ${
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-mono tracking-wider uppercase transition-all ${
               currentFilter === f
-                ? 'bg-anime-surface text-anime-primary shadow-sm border border-white/5'
+                ? 'bg-slate-800 text-indigo-400 font-bold border border-white/5 shadow-inner shadow-black/40'
                 : 'text-slate-500 hover:text-slate-300'
             }`}
             id={`filter-${f}`}
@@ -34,10 +34,10 @@ export default function TaskFilters({ currentFilter, onFilterChange, count }: Ta
       </div>
       
       <div className="text-right">
-        <span className="text-[10px] uppercase font-mono text-slate-500 tracking-widest block leading-none">
-          Active Missions
+        <span className="text-[9px] uppercase font-mono text-slate-500 tracking-widest block leading-none">
+          Active Quests
         </span>
-        <span className="text-2xl font-bold text-slate-200 mt-1 block">
+        <span className="text-xl font-bold text-slate-200 mt-1 block font-mono">
           {count}
         </span>
       </div>

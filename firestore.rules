@@ -17,7 +17,7 @@ service cloud.firestore {
     }
 
     function isValidId(id) {
-      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_-]+$');
     }
 
     function incoming() {
@@ -32,14 +32,19 @@ service cloud.firestore {
     match /users/{userId} {
       allow get: if isOwner(userId) && isValidId(userId);
       allow create: if isOwner(userId) && isValidId(userId) && isValidUser(incoming());
+      
       allow update: if isOwner(userId) && isValidId(userId) && isValidUser(incoming()) && (
-        incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'photoURL'])
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'displayName', 'photoURL', 'email', 'level', 'xp', 'gold', 
+          'selectedCompanion', 'activeTheme', 'ownedThemes', 
+          'avatarId', 'ownedAvatars', 'title', 'ownedTitles', 'stats', 'createdAt'
+        ])
       );
 
       function isValidUser(data) {
         return data.email is string && data.email.size() > 0 && data.email.size() < 256
-          && (data.displayName == null || (data.displayName is string && data.displayName.size() <= 100))
-          && (data.photoURL == null || (data.photoURL is string && data.photoURL.size() <= 500));
+          && (!('displayName' in data) || (data.displayName is string && data.displayName.size() <= 100))
+          && (!('photoURL' in data) || (data.photoURL is string && data.photoURL.size() <= 500));
       }
 
       // 2. Tasks Subcollection
@@ -50,8 +55,8 @@ service cloud.firestore {
         allow update: if isOwner(userId) && isValidId(taskId) && (
           // Action: Toggle completion
           (incoming().diff(existing()).affectedKeys().hasOnly(['completed']) && incoming().completed is bool) ||
-          // Action: Edit task
-          (incoming().diff(existing()).affectedKeys().hasOnly(['text', 'priority', 'dueDate']) && isValidTask(incoming(), userId))
+          // Action: Edit task / RPG categories
+          (incoming().diff(existing()).affectedKeys().hasOnly(['text', 'priority', 'dueDate', 'category', 'difficulty', 'subTasks', 'notes']) && isValidTask(incoming(), userId))
         );
         allow delete: if isOwner(userId) && isValidId(taskId);
       }
@@ -62,7 +67,12 @@ service cloud.firestore {
         && data.text is string && data.text.size() > 0 && data.text.size() <= 500
         && data.completed is bool
         && data.priority in ['low', 'medium', 'high']
-        && (data.dueDate == null || data.dueDate is string);
+        && (!('createdAt' in data) || data.createdAt is int)
+        && data.dueDate is string && data.dueDate.size() > 0
+        && data.category in ['study', 'fitness', 'chores', 'creative', 'routine']
+        && data.difficulty in ['D', 'C', 'B', 'A', 'S']
+        && (!('notes' in data) || data.notes is string)
+        && (!('subTasks' in data) || data.subTasks is list);
     }
   }
 }

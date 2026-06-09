@@ -22,9 +22,11 @@
         "createdAt": { "type": "number" },
         "dueDate": { "type": "string" },
         "priority": { "type": "string", "enum": ["low", "medium", "high"] },
+        "category": { "type": "string", "enum": ["study", "fitness", "chores", "creative", "routine"] },
+        "difficulty": { "type": "string", "enum": ["D", "C", "B", "A", "S"] },
         "userId": { "type": "string" }
       },
-      "required": ["text", "completed", "createdAt", "priority", "userId"]
+      "required": ["text", "completed", "createdAt", "priority", "category", "difficulty", "dueDate", "userId"]
     }
   },
   "firestore": {
